@@ -50,11 +50,21 @@
                 year: 1,
                 gpa: 4.00,
                 help: false
+            },
+            {
+                fullname:"นายสมหวัง สัมโหวง",
+                age: 21,
+                year: 4,
+                gpa: 4.00,
+                help: false
             }
         ]
-        let firstYear = [];
-        let secondYear = [];
-        let thirdYear = [];
+        let studentYear = {
+                1:[],
+                2:[],
+                3:[],
+                4:[],
+            }
         function scholarship(students){
             
             for( i in student){
@@ -67,40 +77,19 @@
                         if(students[i].help == true){
 
                             console.log(`${students[i].fullname} เกิดเมื่อปี ${yearOfBirth} ได้ทุนการศึกษา เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย`);
-                            if(students[i].year == 1){
-                                firstYear.push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย`);
-                            }
-                            else if(students[i].year == 2){
-                                secondYear.push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย`);
-                            }
-                            else if(students[i].year == 3){
-                                thirdYear.push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย`);
-                            }
+                            studentYear[student[i].year].push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย`);
                         }
                         else{
                             console.log(`${students[i].fullname} เกิดเมื่อปี ${yearOfBirth} ได้ทุนการศึกษา เนื่องจากเกรดเฉลี่ยถึงเกณฑ์`);
-                            if(students[i].year == 1){
-                                firstYear.push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์`);
-                            }
-                            else if(students[i].year == 2){
-                                secondYear.push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์`);
-                            }
-                            else if(students[i].year == 3){
-                                thirdYear.push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์`);
-                            }
+                            studentYear[student[i].year].push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์`)
                         }
                     }
                     else if(students[i].year >= 2){
 
-                        if(students[i].help == true){
+                        if(students[i].help){
 
                             console.log(`${students[i].fullname} เกิดเมื่อปี ${yearOfBirth} ได้ทุนการศึกษา เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย`);
-                            if(students[i].year == 2){
-                                secondYear.push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย`);
-                            }
-                            else if(students[i].year == 3){
-                                thirdYear.push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์และยังช่วยงานภาควิชาด้วย`);
-                            }
+                            studentYear[student[i].year].push(`${students[i].fullname} เนื่องจากเกรดเฉลี่ยถึงเกณฑ์`)
                         }
                         else{
                             console.log(`${students[i].fullname} เกิดเมื่อปี ${yearOfBirth} ไม่ได้ทุนการศึกษา เนื่องจากเกรดเฉลี่ยถึงเกณฑ์แต่ไม่ได้ช่วยงานวิชาภาค`);
@@ -114,40 +103,19 @@
                     console.log(`${students[i].fullname} เกิดเมื่อปี ${yearOfBirth} ไม่ได้ทุนการศึกษา เนื่องจากเกรดเฉลี่ยไม่ถึงเกณฑ์`);
                 }
             }
-        }
-        function result(){
-            console.log("ชั้นปีที่ 1");
-            if(firstYear.length > 0){
-                for( i in firstYear){
-                    console.log(firstYear[i]);
-                }
+            for(let i=1;i<=4;i++){
+            console.log("ชั้นปีที่"+i);
+            if(studentYear[i].length==0){
+                    console.log("ไม่มี");
             }
             else{
-                console.log("ไม่มี");
-            }
-
-            console.log("ชั้นปีที่ 2");
-            if(secondYear.length > 0){
-                for( i in secondYear){
-                    console.log(secondYear[i]);
+                for(let j=0;j<studentYear[i].length;j++){
+                    console.log(studentYear[i][j]);
                 }
             }
-            else{
-                console.log("ไม่มี");
-            }
-
-            console.log("ชั้นปีที่ 3");
-            if(thirdYear.length > 0){
-                for( i in thirdYear){
-                    console.log(thirdYear[i]);
-                }
-            }
-            else{
-                console.log("ไม่มี");
             }
         }
         scholarship(student);
-        result();
     </script>
 </body>
 </html>
